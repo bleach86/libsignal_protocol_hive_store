@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 
 import 'models/hive_sender_key_name/hive_sender_key_name.dart';
 import 'models/hive_signal_key_store/hive_signal_key_store.dart';

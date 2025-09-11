@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:libsignal_protocol_hive_store/libsignal_protocol_hive_store.dart';
 import 'package:path_provider/path_provider.dart';
 import 'homepage.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:libsignal_protocol_dart/libsignal_protocol_dart.dart';
 import '../hive_sender_key_name/hive_sender_key_name.dart';
 import '../hive_signal_protocol_address/hive_signal_protocol_address.dart';

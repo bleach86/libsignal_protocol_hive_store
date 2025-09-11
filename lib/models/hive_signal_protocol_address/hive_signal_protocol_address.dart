@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:libsignal_protocol_dart/libsignal_protocol_dart.dart';
 part 'hive_signal_protocol_address.g.dart';
 

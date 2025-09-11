@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:libsignal_protocol_dart/libsignal_protocol_dart.dart';
 import 'package:libsignal_protocol_hive_store/libsignal_protocol_hive_store.dart';
 
@@ -45,8 +45,7 @@ class _SignalTestScreenState extends State<SignalTestScreen> {
     box = await Hive.openBox<HiveSignalKeyStoreModel>("signalKeysBox");
     HiveSignalKeyStoreModel? tempAlice = box!.get(alice);
     if (tempAlice == null) {
-      tempAlice = HiveSignalKeyStoreModel.generateFreshKeys(preKeysCount: 10);
-      await box!.put(alice, tempAlice);
+      tempAlice = HiveSignalKeyStoreModel.generateFreshKeys();
     }
     aliceModel = SignalHelperModel(
       name: alice,
@@ -56,9 +55,9 @@ class _SignalTestScreenState extends State<SignalTestScreen> {
     //
     HiveSignalKeyStoreModel? tempBob = box!.get(bob);
     if (tempBob == null) {
-      tempBob = HiveSignalKeyStoreModel.generateFreshKeys(preKeysCount: 10);
-      await box!.put(bob, tempBob);
+      tempBob = HiveSignalKeyStoreModel.generateFreshKeys();
     }
+
     bobModel = SignalHelperModel(
       name: bob,
       signalStore: HiveSignalProtocolStore(tempBob),

@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:libsignal_protocol_hive_store/libsignal_protocol_hive_store.dart';
 import 'signal_helper.dart';
 
@@ -46,13 +46,9 @@ class _SignalTestGroupScreenState extends State<SignalTestGroupScreen> {
 
   addParticipant(String name) async {
     HiveSignalKeyStoreModel? person = box!.get(name);
-    if (person == null) {
-      person = HiveSignalKeyStoreModel.generateFreshKeys(preKeysCount: 10);
-      await box!.put(name, person);
-    }
     SignalHelperModel helper = SignalHelperModel(
       name: name,
-      signalStore: HiveSignalProtocolStore(person),
+      signalStore: HiveSignalProtocolStore(person!),
       senderKeyStore: HiveSenderKeyStore(person),
     );
     String kdm = await helper.createGroupSession(groupName);
