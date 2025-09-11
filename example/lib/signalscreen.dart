@@ -44,9 +44,8 @@ class _SignalTestScreenState extends State<SignalTestScreen> {
   initialize() async {
     box = await Hive.openBox<HiveSignalKeyStoreModel>("signalKeysBox");
     HiveSignalKeyStoreModel? tempAlice = box!.get(alice);
-    if (tempAlice == null) {
-      tempAlice = HiveSignalKeyStoreModel.generateFreshKeys();
-    }
+    tempAlice ??= HiveSignalKeyStoreModel.generateFreshKeys();
+
     aliceModel = SignalHelperModel(
       name: alice,
       signalStore: HiveSignalProtocolStore(tempAlice),
@@ -54,9 +53,7 @@ class _SignalTestScreenState extends State<SignalTestScreen> {
     );
     //
     HiveSignalKeyStoreModel? tempBob = box!.get(bob);
-    if (tempBob == null) {
-      tempBob = HiveSignalKeyStoreModel.generateFreshKeys();
-    }
+    tempBob ??= HiveSignalKeyStoreModel.generateFreshKeys();
 
     bobModel = SignalHelperModel(
       name: bob,

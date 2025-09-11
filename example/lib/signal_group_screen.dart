@@ -46,9 +46,11 @@ class _SignalTestGroupScreenState extends State<SignalTestGroupScreen> {
 
   addParticipant(String name) async {
     HiveSignalKeyStoreModel? person = box!.get(name);
+    person ??= HiveSignalKeyStoreModel.generateFreshKeys();
+
     SignalHelperModel helper = SignalHelperModel(
       name: name,
-      signalStore: HiveSignalProtocolStore(person!),
+      signalStore: HiveSignalProtocolStore(person),
       senderKeyStore: HiveSenderKeyStore(person),
     );
     String kdm = await helper.createGroupSession(groupName);
