@@ -18,4 +18,19 @@ class HiveSignalStore {
       Hive.registerAdapter<HiveSenderKeyName>(HiveSenderKeyNameAdapter());
     }
   }
+
+  static Future<void> initializeIsolated() async {
+    if (!IsolatedHive.isAdapterRegistered(220)) {
+      IsolatedHive.registerAdapter<HiveSignalKeyStoreModel>(
+          HiveSignalKeyStoreModelAdapter());
+    }
+    if (!IsolatedHive.isAdapterRegistered(221)) {
+      IsolatedHive.registerAdapter<HiveSignalProtocolAddress>(
+          HiveSignalProtocolAddressAdapter());
+    }
+    if (!IsolatedHive.isAdapterRegistered(222)) {
+      IsolatedHive.registerAdapter<HiveSenderKeyName>(
+          HiveSenderKeyNameAdapter());
+    }
+  }
 }
